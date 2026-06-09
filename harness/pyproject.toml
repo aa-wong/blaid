@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "blaid"
+version = "0.1.0"
+description = "Self-hosted autonomous coding harness: PRD/ticket -> isolated build -> pull request."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Aaron Wong", email = "aaron@mosaia.io" }]
+dependencies = [
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+blaid = "blaid.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/blaid"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
